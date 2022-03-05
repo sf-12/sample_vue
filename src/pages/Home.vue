@@ -22,18 +22,18 @@ export default {
         {text: '状態', value: 'status', align: 'center'},
       ],
       samples: [],
-      sample: {
-        id: "",
-        name: "",
-        status: ""
-      }
     };
   },
   mounted() {
-    axios.get('http://localhost:3000/api/v1/samples').then(res => {
-      console.log("res.data:",res.data['samples'])
-      this.samples = res.data['samples']
-    })
+    this.getSamples()
+  },
+  methods: {
+    getSamples() {
+      axios.get('http://localhost:3000/api/v1/samples').then(res => {
+        console.log("res.data['samples']:",res.data['samples'])
+        this.samples = res.data['samples']
+      })
+    }
   }
 }
 </script>
